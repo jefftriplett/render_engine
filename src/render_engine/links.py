@@ -58,9 +58,7 @@ class Image(Link):
     def __str__(self):
         """prints the image point"""
 
-        if self.meta:
-            attrs = " ".join([f'{k}="{v}"' for k, v in self.meta.items()])
-            return f'<img src="{self.url}" alt="{self.text}" {attrs} />'
-
-        else:
+        if not self.meta:
             return f'<img src="{self.url}" alt="{self.text}" />'
+        attrs = " ".join([f'{k}="{v}"' for k, v in self.meta.items()])
+        return f'<img src="{self.url}" alt="{self.text}" {attrs} />'

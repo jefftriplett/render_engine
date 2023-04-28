@@ -14,5 +14,4 @@ class MarkdownPageParser(BasePageParser):
     def parse(content: str, page: "Page") -> str:
         """Parses the content with the parser"""
         extras = getattr(page, "parser_extras", {})
-        markup = markdown(content, extras=extras.get("markdown_extras", []))
-        return markup
+        return markdown(content, extras=extras.get("markdown_extras", []))

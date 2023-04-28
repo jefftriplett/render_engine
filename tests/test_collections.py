@@ -41,7 +41,7 @@ def test_pages_generate_from_collection_content_path(tmp_path):
         content_path = dir
 
     collection = BasicCollection()
-    assert len([page for page in collection]) == len(content)
+    assert len(list(collection)) == len(content)
 
     for page in collection:
         # Order is not guaranteed

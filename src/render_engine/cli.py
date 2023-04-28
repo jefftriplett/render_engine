@@ -304,9 +304,9 @@ def serve(
                     console.print(f"Address is already in use, sleeping 60 sec. Attempts left {attempts}")
                     time.sleep(attempts_wait_time)
         else:
-           console.print(f"Serving [blue]{directory} on http://{server_address[0]}:{server_address[1]}")
-           console.print(f"Press [bold red]CTRL+C[/bold red] to stop serving")
-           return httpd.serve_forever()
+            console.print(f"Serving [blue]{directory} on http://{server_address[0]}:{server_address[1]}")
+            console.print("Press [bold red]CTRL+C[/bold red] to stop serving")
+            return httpd.serve_forever()
 
 
 def cli():

@@ -46,7 +46,7 @@ class Site:
         self,
         plugins: list[str] = [],
     ) -> None:
-        self.route_list = dict()
+        self.route_list = {}
         self.subcollections = defaultdict(lambda: {"pages": []})
         self.engine.filters["url_for"] = partial(url_for, site=self)
         self.plugins = [*plugins, *getattr(self, "plugins", [])]

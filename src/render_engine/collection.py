@@ -132,7 +132,7 @@ class Collection(BaseObject):
     @property
     def sorted_pages(self):
         return sorted(
-            (page for page in self.__iter__()),
+            iter(self.__iter__()),
             key=lambda page: getattr(page, self.sort_by, self._title),
             reverse=self.sort_reverse,
         )
@@ -166,7 +166,7 @@ class Collection(BaseObject):
     @property
     def _feed(self):
         feed = self.Feed()
-        feed.pages = [page for page in self]
+        feed.pages = list(self)
         feed.title = getattr(self, "feed_title", self._title)
         feed.slug = self._slug
         feed.Parser = self.PageParser
@@ -188,8 +188,7 @@ class Collection(BaseObject):
             for page in self.iter_content_path():
                 yield self.get_page(page)
         else:
-            for page in self.pages:
-                yield page
+            yield from self.pages
 
 def render_archives(archive, **kwargs) -> list[Archive]:
     return [archive.render(pages=archive.pages, **kwargs) for archive in archive]

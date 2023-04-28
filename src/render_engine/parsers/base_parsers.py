@@ -5,8 +5,7 @@ import frontmatter
 
 def parse_content(content: str):
     """Fething content and atttributes from a content_path"""
-    p = frontmatter.parse(content)
-    return p
+    return frontmatter.parse(content)
 
 class BasePageParser:
     @staticmethod
